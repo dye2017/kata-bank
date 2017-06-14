@@ -16,6 +16,10 @@ public class Account {
 	@Column(name = "ACC_ID")
 	private Long id;
 
+    @Version
+    @Column(name = "ACC_VERSION")
+    private Long version;
+
 	@Column(name = "ACC_BALANCE", nullable = false)
 	@NotNull
 	private BigDecimal balance;
@@ -75,6 +79,21 @@ public class Account {
 	}
 	public void updateBalance(Transfer transfer) {
 		setBalance(getBalance().add(transfer.getTransferAmount()));
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		Account account = (Account) o;
+
+		return id != null ? id.equals(account.id) : account.id == null;
+	}
+
+	@Override
+	public int hashCode() {
+		return id != null ? id.hashCode() : 0;
 	}
 
 	public static class Builder {

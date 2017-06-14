@@ -189,7 +189,7 @@ public class AccounServiceTest {
 		account.addTransfer(transfer);
 
 		Transfer transfer2 = new Transfer.Builder()
-				.id(1L).type(TransferType.DEPOSIT)
+				.id(2L).type(TransferType.DEPOSIT)
 				.transfertDate(firstAugust)
 				.transfertAmount(BigDecimal.TEN)
 				.account(account).build();

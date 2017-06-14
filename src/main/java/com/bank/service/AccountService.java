@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityManager;
+import javax.persistence.LockModeType;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -24,7 +26,6 @@ public class AccountService {
 
 	@Autowired
 	TransferRepository transferRepository;
-
 
 	@Transactional
 	public Account deposit(TransferDTO transferDTO) throws FunctionalException {
