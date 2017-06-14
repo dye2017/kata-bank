@@ -27,7 +27,7 @@ public class AccountService {
 
 
 	@Transactional
-	public synchronized Account deposit(TransferDTO transferDTO) throws FunctionalException {
+	public Account deposit(TransferDTO transferDTO) throws FunctionalException {
 		if (transferDTO.getTransferAmount().compareTo(BigDecimal.ZERO) < 0) {
 			throw new FunctionalException("Le montant déposé ne peut pas être négatif.");
 		}
@@ -38,7 +38,7 @@ public class AccountService {
 
 
 	@Transactional
-	public synchronized Account retrieve(TransferDTO transferDTO) throws FunctionalException {
+	public Account retrieve(TransferDTO transferDTO) throws FunctionalException {
 		if (transferDTO.getTransferAmount().compareTo(BigDecimal.ZERO) > 0) {
 			throw new FunctionalException("Le montant retiré doit être négatif.");
 		}
